@@ -117,4 +117,4 @@ def summary_string(model, input_size, batch_size=-1, device=torch.device('cuda:0
     summary_str += "Estimated Total Size (MB): %0.2f" % total_size + "\n"
     summary_str += "----------------------------------------------------------------" + "\n"
     # return summary
-    return summary_str, (total_params, trainable_params)
+    return summary_str, (total_params, trainable_params, total_params_size, total_size)
