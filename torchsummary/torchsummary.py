@@ -7,11 +7,11 @@ import numpy as np
 
 
 def summary(model, input_size, batch_size=-1, device=torch.device('cuda:0'), dtypes=None):
-    result, params_info = summary_string(
+    result, trainable_params, total_params_size, total_size = summary_string(
         model, input_size, batch_size, device, dtypes)
     print(result)
 
-    return params_info
+    return (trainable_params, total_params_size, total_size)
 
 
 def summary_string(model, input_size, batch_size=-1, device=torch.device('cuda:0'), dtypes=None):
@@ -116,5 +116,5 @@ def summary_string(model, input_size, batch_size=-1, device=torch.device('cuda:0
     summary_str += "Params size (MB): %0.2f" % total_params_size + "\n"
     summary_str += "Estimated Total Size (MB): %0.2f" % total_size + "\n"
     summary_str += "----------------------------------------------------------------" + "\n"
-    # return summary
-    return summary_str, (total_params, trainable_params, total_params_size, total_size)
+   
+    return (summary_str, total_params, trainable_params, total_params_size, total_size)
